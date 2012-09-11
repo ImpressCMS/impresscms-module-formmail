@@ -1,0 +1,13 @@
+<p><b><{$form_title}> <{$form_subject}></b></p>
+
+<table class="outer" cellspacing="1" width="100%">
+<{foreach item=form from=$form_list}>
+  <tr>
+    <td class="head"><a href="index.php?id_form=<{$form.id_form}>"><{$form.title}></a></td>
+    <td class="<{cycle name=class values="even,odd"}>"><{$form.text}></td>
+  </tr>
+<{/foreach}>
+</table>
+<br /><br />
+<{$formmail_credits}>
+<br /><br />

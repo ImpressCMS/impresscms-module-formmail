@@ -1,0 +1,46 @@
+<{$formmail.javascript}>
+<p><{$text_index}></p>
+<p><{$text_form}></p>
+
+<form name="<{$formmail.name}>" action="<{$formmail.action}>" method="<{$formmail.method}>" <{$formmail.extra}>>
+<table cellspacing="1" class="outer">
+  <tr>
+	<th colspan="2" align="center"><{$formmail.title}></th>
+  </tr>
+  <{foreach item=element from=$formmail.elements}>
+  <{if $element.hidden != true}>
+  <tr>
+	<td class="head"><{$element.caption}></td>
+	<{if $element.caption == $ATTESTATION_CODE}>
+	<td class="<{cycle values="even,odd"}>">
+	<table border="0">
+	<tr>
+	<td>
+	<{$element.body}>
+	</td>
+	<td>
+	<{$md5ninsyo}>
+	</td>
+	</tr>
+	<tr>
+	<td colspan="2">
+	<{$ATTESTATION_MESSAGE}>
+	</td>
+	</tr>
+	</table>
+	<{else}>
+	<td class="<{cycle values="even,odd"}>"><{$element.body}>
+	<{/if}>
+	</td>
+  </tr>
+  <{/if}>
+  <{/foreach}>
+  </table>
+
+  <{foreach item=element from=$formmail.elements}>
+  <{if $element.hidden == true}>
+	<{$element.body}>
+  <{/if}>
+  <{/foreach}>
+</form>
+<br /><br />
