@@ -203,10 +203,10 @@ if (!isset($_GET['id_form'])) {
 
 		$count = 0;
 		foreach( $elements as $i ){
-			$renderer =& new FormmailElementRenderer($i);
+			$renderer = new FormmailElementRenderer($i);
 			$formaddvalue = 'ele_'.$i->getVar('ele_id') ;
 			$formvalue = $_POST[$formaddvalue];
-			$form_ele =& $renderer->constructElement($formaddvalue);
+			$form_ele = $renderer->constructElement($formaddvalue);
 			if (isset($_POST[$formaddvalue])) {
 				$form_ele->setValue($formvalue);
 			}
@@ -285,7 +285,7 @@ if (!isset($_GET['id_form'])) {
 				} else
 				{
 					include_once XOOPS_ROOT_PATH.'/modules/formmail/class/captcha_x/class.captcha_x.php';
-					$captcha = &new captcha_x();
+					$captcha = new captcha_x();
 					if ( !isset($_POST['captcha']) || !$captcha->validate($_POST['captcha']) )
 					{
 						include_once XOOPS_ROOT_PATH.'/header.php';
